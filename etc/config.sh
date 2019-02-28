@@ -8,6 +8,7 @@ alias grep='grep --color=tty'
 alias nvim='/usr/local/opt/bin/vim --cmd "let g:vim_startup=\"nvim\""'
 alias mvim='/usr/local/opt/bin/vim --cmd "let g:vim_startup=\"mvim\""'
 alias tmux='tmux -2'
+alias vim="vim -X"
 
 # default editor
 export EDITOR=vim
@@ -26,49 +27,40 @@ fi
 # exit if not bash/zsh, or not in an interactive shell
 #----------------------------------------------------------------------
 [ -z "$BASH_VERSION" ] && [ -z "$ZSH_VERSION" ] && return
-[[ $- != *i* ]] && return
+#[[ $- != *i* ]] && return
 
 
 #----------------------------------------------------------------------
 # keymap
 #----------------------------------------------------------------------
 
-# default bash key binding
-if [ -n "$BASH_VERSION" ]; then
-	bind '"\eh":"\C-b"'
-	bind '"\el":"\C-f"'
-	bind '"\ej":"\C-n"'
-	bind '"\ek":"\C-p"'
-	bind '"\eH":"\eb"'
-	bind '"\eL":"\ef"'
-	bind '"\eJ":"\C-a"'
-	bind '"\eK":"\C-e"'
-	bind '"\e;":"ll\n"'
-elif [ -n "$ZSH_VERSION" ]; then
-	bindkey -s '\e;' 'll\n'
-	bindkey -s '\eu' 'ranger_cd\n'
-fi
 
 
 #----------------------------------------------------------------------
 # https://github.com/rupa/z
 #----------------------------------------------------------------------
-if [ -z "$DISABLE_Z_PLUGIN" ]; then
-	if [ -x "$INIT_LUA" ] && [ -f "~/.local/bin/z.lua" ]; then
+if command -v lua>/dev/null 2>&1; then
+	INIT_LUA="lua"
+fi
+if command -v lua5.3>/dev/null 2>&1; then
+	INIT_LUA="lua5.3"
+fi
+if [ "$INIT_LUA" ]; then
+	if [ -f "$HOME/.local/bin/z.lua" ]; then
 		if [ -n "$BASH_VERSION" ]; then
-			eval "$($INIT_LUA ~/.local/bin/z.lua --init bash once)"
+			eval "$($INIT_LUA $HOME/.local/bin/z.lua --init bash once)"
 		elif [ -n "$ZSH_VERSION" ]; then
-			eval "$($INIT_LUA ~/.local/bin/z.lua --init zsh once)"
+			eval "$($INIT_LUA $HOME/.local/bin/z.lua --init zsh once)"
 		else
-			eval "$($INIT_LUA ~/.local/etc/z.lua --init auto once)"
+			eval "$($INIT_LUA $HOME/.local/bin/z.lua --init auto once)"
 		fi
 		alias zz='z -i'
+	fi
 	elif [ -f "~/.local/bin/z.sh" ]; then
 		if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
-			. "~/.local/bin/z.sh"
+			"~/.local/bin/z.sh"
 		fi
 		alias zz='z'
-	fi
 fi
 
 alias zc='z -c'

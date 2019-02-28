@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+#set -x
+
 ETC=~/.local/etc
 BIN=~/.local/bin
 VIMCONFIG=~/.local/vim
@@ -10,7 +12,7 @@ mkdir -p $VIMCONFIG
 # git clone respository
 cd ~/.local/
 
-if [ -d vim]; then
+if [ -d vim ]; then
     cd vim
     git pull
 	cd ..
