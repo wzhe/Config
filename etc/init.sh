@@ -54,6 +54,9 @@ if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
 		if [ -f "$HOME/.local/etc/function.sh" ]; then
 			. "$HOME/.local/etc/function.sh"
 		fi
+		if [ -f "$HOME/.local/bin/m.sh" ]; then
+			. "$HOME/.local/bin/m.sh"
+		fi
 	fi
 fi
 
