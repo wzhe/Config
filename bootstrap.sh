@@ -31,10 +31,8 @@ fi
 cp -rf etc/* $ETC/
 cp -rf bin/* $BIN/
 cp bootstrap.sh $BIN/
+chmod +x $BIN/*
 
-# setup lemonade
-# TODO check sys_type
-sys_type=linux_amd64
 mkdir -p ~/.config
 
 # source init.sh
