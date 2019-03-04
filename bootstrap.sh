@@ -1,13 +1,12 @@
 #! /usr/bin/env bash
 
-#set -x
+set -x
 
 ETC=~/.local/etc
 BIN=~/.local/bin
 VIMCONFIG=~/.local/vim
 mkdir -p $ETC
 mkdir -p $BIN
-mkdir -p $VIMCONFIG
 
 # git clone respository
 cd ~/.local/
@@ -17,14 +16,14 @@ if [ -d vim ]; then
     git pull
 	cd ..
 else
-    git clone git@github.com:wzhe/vim-init.git vim
+    git clone https://github.com/wzhe/vim-init.git vim
 fi
 
 if [ -d dotfiles ]; then
     cd dotfiles
     git pull
 else
-    git clone git@github.com:wzhe/Config.git dotfiles
+    git clone https://github.com/wzhe/Config.git dotfiles
     cd dotfiles
 fi
 
