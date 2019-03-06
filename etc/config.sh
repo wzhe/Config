@@ -9,6 +9,7 @@ alias nvim='/usr/local/opt/bin/vim --cmd "let g:vim_startup=\"nvim\""'
 alias mvim='/usr/local/opt/bin/vim --cmd "let g:vim_startup=\"mvim\""'
 alias tmux='tmux -2'
 alias vim="vim -X"
+alias emacs="emacs -nw"
 
 # default editor
 export EDITOR=vim
@@ -56,9 +57,9 @@ if [ "$INIT_LUA" ]; then
 		fi
 		alias zz='z -i'
 	fi
-	elif [ -f "~/.local/bin/z.sh" ]; then
+	elif [ -f "$HOME/.local/bin/z.sh" ]; then
 		if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
-			"~/.local/bin/z.sh"
+			. $HOME/.local/bin/z.sh
 		fi
 		alias zz='z'
 fi
