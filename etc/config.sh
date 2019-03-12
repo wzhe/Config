@@ -13,7 +13,10 @@ alias emacs="emacs -nw"
 
 # default editor
 export EDITOR=vim
-# export TERM=xterm-256color
+
+if [ "$TERM" == "xterm" ]; then
+	export TERM=xterm-256color
+fi
 
 # disable ^s and ^q
 # stty -ixon 2> /dev/null
