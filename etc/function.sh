@@ -178,7 +178,8 @@ function _fish_collapsed_pwd() {
 function _prompt_init_theme {
 	if [ -n "$BASH_VERSION" ]; then
 		if [[ "$1" == "" ]]; then
-			export PS1='\u@\h:\w\$ '
+			# export PS1='\u@\h:\w\$ '
+			export PS1='\[\e[38;5;135m\]\u\[\e[0m\]@\[\e[38;5;166m\]\h\[\e[0m \[\e[38;5;118m\]\w\[\e[0m\] \$ '
 		elif [[ "$1" == "linux" ]]; then
 			export PS1='\[\e[32m\]\u@\h\[\e[0m:\[\e[33m\]\w\[\e[0m\]\$ '
 		elif [[ "$1" == "debian" ]]; then
