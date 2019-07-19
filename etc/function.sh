@@ -286,6 +286,7 @@ function _prompt_theme_title
 		fi
 	fi
 }
+_prompt_theme_title skwp256
 
 
 #----------------------------------------------------------------------
