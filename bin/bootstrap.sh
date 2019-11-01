@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-set -x
+#set -x
 
 ETC=~/.local/etc
 BIN=~/.local/bin
@@ -29,7 +29,10 @@ fi
 
 cp -rf etc/* $ETC/
 cp -rf bin/* $BIN/
-cp bootstrap.sh $BIN/
+
+# emacs config
+cp -f etc/.custom.el $HOME/
+
 chmod +x $BIN/*
 
 mkdir -p ~/.config
@@ -44,10 +47,10 @@ touch ~/.vimrc
 sed -i "\:$VIMCONFIG/init.vim:d" ~/.vimrc
 echo "source $VIMCONFIG/init.vim" >> ~/.vimrc
 
-# source tmux.conf
-touch ~/.tmux.conf
-sed -i "\:$ETC/tmux.conf:d" ~/.tmux.conf
-echo "source $ETC/tmux.conf" >> ~/.tmux.conf
+# TODO source tmux.conf
+#touch ~/.tmux.conf
+#sed -i "\:$ETC/tmux.conf:d" ~/.tmux.conf
+#echo "source $ETC/tmux.conf" >> ~/.tmux.conf
 
 # update git config
 git config --global color.status auto
