@@ -30,7 +30,7 @@ fi
 cp -rf etc/* $ETC/
 cp -rf bin/* $BIN/
 
-# emacs config 
+# emacs config
 cp -f etc/.custom.el $HOME/
 
 chmod +x $BIN/*

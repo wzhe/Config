@@ -8,6 +8,7 @@ $INSTALL curl
 $INSTALL vim
 $INSTALL tmux
 $INSTALL ctags
+$INSTALL gtags
 
 $INSTALL ripgrep
 $INSTALL silversearcher-ag
