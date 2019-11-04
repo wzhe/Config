@@ -1,13 +1,16 @@
 ;; use gruvbox theme
-(load-theme 'gruvbox t)
+(load-theme 'molokai t)
 
 ;; Org
 ;;http://www.zmonster.me/2018/02/28/org-mode-capture.html
 (setq org-agenda-files '("~/my-org/agenda.org"))
 (setq org-default-notes-file "~/my-org/inbox.org")
 
+;;(add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+(with-eval-after-load 'evil
+  (defalias #'forward-evil-word #'forward-evil-symbol))
 ;; key
-;; {{ Use `SPC` as leader key
+;; Use `SPC` as leader key
 ;; all keywords arguments are still supported
 (nvmap :prefix "SPC"
        "ff" 'find-file
@@ -17,6 +20,7 @@
        "oa" 'org-agenda
        "oc" 'org-capture
        "<SPC>"  'counsel-M-x
+       "TAB" 'evil-switch-to-windows-last-buffer
        "w/" 'split-window-right
        "w-" 'split-window-below
        "wM" 'delete-other-windows
