@@ -115,6 +115,10 @@ See `org-capture-templates' for more information."
 
 
 
+;;(add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+(with-eval-after-load 'evil
+  (defalias #'forward-evil-word #'forward-evil-symbol))
+
 ;; key
 ;; {{ Use `SPC` as leader key
 ;; all keywords arguments are still supported
