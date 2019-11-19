@@ -1,12 +1,12 @@
 ## Installation
 Linux
 ```bash
-curl https://raw.githubusercontent.com/wzhe/Config/master/bootstrap.sh | bash
+curl https://raw.githubusercontent.com/wzhe/Config/master/bin/bootstrap.sh | bash
 ```
 Or:
 
 ```bash
-wget -O - https://raw.githubusercontent.com/wzhe/Config/master/bootstrap.sh | bash
+wget -O - https://raw.githubusercontent.com/wzhe/Config/master/bin/bootstrap.sh | bash
 ```
 
 参考：
