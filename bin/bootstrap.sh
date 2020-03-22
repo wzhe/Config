@@ -28,8 +28,8 @@ else
     git clone https://github.com/wzhe/vim-init.git vim
 fi
 
-cp -rf etc/* $ETC/
-cp -rf bin/* $BIN/
+yes | cp -R etc/. $ETC/
+yes | cp -R bin/. $BIN/
 
 chmod +x $BIN/*
 

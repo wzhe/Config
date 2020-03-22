@@ -4,7 +4,7 @@ source install-pre.sh
 
 DOTFILES=~/.local/etc
 TMUX=$HOME/.tmux
-ZSH=$HOME/.antigen
+ANTIGEN=$HOME/.antigen
 
 printf "${BLUE} ➜  Starting Dotfiles...${NORMAL}\n"
 
@@ -30,11 +30,7 @@ fi
 
 # Emacs Configs
 printf "${BLUE} ➜  Installing Emacs Config...${NORMAL}\n"
-if [ -d $HOME/.emacs.d ]; then
-    printf "~/.emacs.d exist.\n"
-else
-    git clone --depth 1 -b master https://github.com/redguardtoo/emacs.d.git ~/.emacs.d
-fi
+sync_repo redguardtoo/emacs.d.git ~/.emacs.d
 ln -sf $DOTFILES/.custom.el $HOME/.custom.el
 
 # Oh My Tmux
@@ -48,11 +44,9 @@ ln -sf $TMUX/.tmux.conf $HOME/.tmux.conf
 # printf "${BLUE} ➜  Installing misc...${NORMAL}\n"
 # source $DOTFILES/install_misc.sh
 
-printf "${BLUE} ➜  Installing zsh antigen ${NORMAL}\n"
+printf "${BLUE} ➜  Installing Antigen...${NORMAL}\n"
 #$INSTALL zsh-antigen
-sudo mkdir -p /usr/share/zsh-antigen && sudo curl -o /usr/share/zsh-antigen/antigen.zsh -sL git.io/antigen
-mkdir -p $ZSH
-curl -L git.io/antigen > $ZSH/antigen.zsh.tmp && mv $ZSH/antigen.zsh.tmp $ZSH/antigen.zsh
+sync_repo zsh-users/antigen $ANTIGEN
 
 # Entering zsh
 printf "Done. Enjoy!\n"
