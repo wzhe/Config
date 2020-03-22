@@ -5,19 +5,12 @@
 ETC=~/.local/etc
 BIN=~/.local/bin
 VIMCONFIG=~/.local/vim
+
 mkdir -p $ETC
 mkdir -p $BIN
 
 # git clone respository
 cd ~/.local/
-
-if [ -d vim ]; then
-    cd vim
-    git pull
-	cd ..
-else
-    git clone https://github.com/wzhe/vim-init.git vim
-fi
 
 if [ -d dotfiles ]; then
     cd dotfiles
@@ -27,11 +20,16 @@ else
     cd dotfiles
 fi
 
+if [ -d vim ]; then
+    cd vim
+    git pull
+	cd ..
+else
+    git clone https://github.com/wzhe/vim-init.git vim
+fi
+
 cp -rf etc/* $ETC/
 cp -rf bin/* $BIN/
-
-# emacs config
-cp -f etc/.custom.el $HOME/
 
 chmod +x $BIN/*
 
@@ -58,4 +56,5 @@ git config --global color.diff auto
 git config --global color.branch auto
 git config --global color.interactive auto
 git config --global core.quotepath false
-
+git config --global user.name wzhe
+git config --global user.email ahuwang@163.com

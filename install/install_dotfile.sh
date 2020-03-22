@@ -35,6 +35,7 @@ if [ -d $HOME/.emacs.d ]; then
 else
     git clone --depth 1 -b master https://github.com/redguardtoo/emacs.d.git ~/.emacs.d
 fi
+ln -sf $DOTFILES/.custom.el $HOME/.custom.el
 
 # Oh My Tmux
 printf "${BLUE} ➜  Installing Oh My Tmux...${NORMAL}\n"
