@@ -5,6 +5,7 @@ source install-pre.sh
 DOTFILES=~/.local/etc
 TMUX=$HOME/.tmux
 ANTIGEN=$HOME/.antigen
+VIMCONFIG=$HOME/.local/vim
 
 printf "${BLUE} ➜  Starting Dotfiles...${NORMAL}\n"
 
@@ -28,9 +29,17 @@ else
     cp -n $DOTFILES/.gitconfig_linux $HOME/.gitconfig
 fi
 
+# vim Configs
+printf "${BLUE} ➜  Installing vim Config...${NORMAL}\n"
+sync_repo wzhe/vim-init $VIMCONFIG
+# source vimrc.vim
+touch ~/.vimrc
+sed -i "\:$VIMCONFIG/init.vim:d" ~/.vimrc
+echo "source $VIMCONFIG/init.vim" >> ~/.vimrc
+
 # Emacs Configs
 printf "${BLUE} ➜  Installing Emacs Config...${NORMAL}\n"
-sync_repo redguardtoo/emacs.d.git ~/.emacs.d
+sync_repo redguardtoo/emacs.d ~/.emacs.d
 ln -sf $DOTFILES/.custom.el $HOME/.custom.el
 
 # Oh My Tmux
