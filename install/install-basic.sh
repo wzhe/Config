@@ -10,6 +10,7 @@ $INSTALL vim
 $INSTALL tmux
 $INSTALL ctags
 $INSTALL global
+$INSTALL xclip
 $INSTALL emacs
 
 $INSTALL ripgrep
