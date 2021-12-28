@@ -38,9 +38,21 @@ sed -i "\:$VIMCONFIG/init.vim:d" ~/.vimrc
 echo "source $VIMCONFIG/init.vim" >> ~/.vimrc
 
 # Emacs Configs
-printf "${BLUE} ➜  Installing Emacs Config...${NORMAL}\n"
-sync_repo redguardtoo/emacs.d ~/.emacs.d
+printf "${BLUE} ➜  Installing chemacs Config...${NORMAL}\n"
+sync_repo plexus/chemacs ~/chemacs
+~/chemacs/install.sh
+ln -sf $DOTFILES/.emacs-profiles.el $HOME/.emacs-profiles.el
+
+printf "${BLUE} ➜  Installing Emacs Config doom-emacs...${NORMAL}\n"
+sync_repo hlissner/doom-emacs ~/doom-emacs
+ln -sf $DOTFILES/doom $HOME/.config/doom
+
+printf "${BLUE} ➜  Installing Emacs Config chenbin-emacs...${NORMAL}\n"
+sync_repo redguardtoo/emacs.d ~/chenbin-emacs
 ln -sf $DOTFILES/.custom.el $HOME/.custom.el
+
+printf "${BLUE} ➜  Installing Emacs Config Centaur-emacs...${NORMAL}\n"
+sync_repo redguardtoo/emacs.d ~/centaur-emacs
 
 # Oh My Tmux
 printf "${BLUE} ➜  Installing Oh My Tmux...${NORMAL}\n"
